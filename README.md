@@ -8,7 +8,7 @@ Why? becuase it allows others to copy and paste their code to replicate or resea
 
 - In order to create codeblocks in markdown you need to use three backticks. (```)
 
-![Backtick image](assets/ETTnT.jpg)
+  <img width="300px" src="assets/ETTnT.jpg" /> 
 
 ```
 Print ("Hello, World!")
@@ -29,15 +29,15 @@ File "example.py", line 2, in divide
 return a / b
 ZeroDivisionError: division by zero
 ```
- > Here is an example of using a codeblock for an error that appears in bash.
+   > Here is an example of using a codeblock for an error that appears in bash.
   
 ## Step 2 - Use Github Flavored Markdown Task Lists
 
 Github extends markdown to have a list where you can check off items. Using lists can show that your doing the work and people can see your making an effort making it easier to help you. [<sup>[2]</sup>](#references)  
 
 - [x] Finish step 1 :tada: [<sup>[3]</sup>](#references)
-- [ ] Finish step 2
-- [ ] Finish step 3
+- [x] Finish step 2 :tada:
+- [x] Finish step 3 :tada:
 
 ## Step 3 - Use Emojis (Optional)
 
@@ -47,8 +47,6 @@ Here are some examples: [<sup>[4]</sup>](#references)
 | Name  | Shortcode | Emoji |
 | --- | --- | --- |
 | Cloud | `:cloud:` | :cloud: |
-
-
 
 ## References
 
