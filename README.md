@@ -8,6 +8,8 @@ Why? becuase it allows others to copy and paste their code to replicate or resea
 
 - In order to create codeblocks in markdown you need to use three backticks. (```)
 
+![Backtick image](
+
 ```
 Print ("Hello, World!")
 ```
@@ -27,7 +29,7 @@ File "example.py", line 2, in divide
 return a / b
 ZeroDivisionError: division by zero
 ```
-> Here is an example of using a codeblock for an error that appears in bash.
+ > Here is an example of using a codeblock for an error that appears in bash.
   
 ## Step 2 - Use Github Flavored Markdown Task Lists
 
