@@ -41,3 +41,11 @@ git push --tags
 
 ![screenshot](assets/tag_to_issue.png)
 
+## Pull Request (PR)
+- Let's run down what we have done. There was an issue opened for a new feature, we created a new branch to work on the feature becuase we didn't want to merge any changes to the main branch because we can introduce bugs, we made the feature and pushed it into the branch and tagged it to the issue.
+
+- Now we need to merge the branch into the main branch so let's create a PR in GitHub.
+
+![screenshot](assets/PR.png)
+
+- We went ahead and made a PR request now we are going to merge it to the main branch.
