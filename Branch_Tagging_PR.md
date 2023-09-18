@@ -49,3 +49,6 @@ git push --tags
 ![screenshot](assets/PR.png)
 
 - We went ahead and made a PR request now we are going to merge it to the main branch.
+
+![screenshot](assets/end_of_merge.png)
+> For this part we went ahead and merge it to the main branch ourselves but in a real dev environment this PR request will have to be looked over before it is merged.
