@@ -22,7 +22,7 @@ Let's go ahead and jump into where we used Environment Variables.
 
 - The first thing we have done is run the ```env``` command to show us all the set environment variables.
 
-![screenshot](assets/Screenshot 2023-09-20 at 1.29.11 PM.png)
+![screenshot](assets/env.png)
 
 - To look for a certain variable we used grep:
 
@@ -32,11 +32,11 @@ env | grep Terraform
 
 - We made changes to the bash script file that's in our ```./bin``` folder to ```cd``` into our ```./workspace``` directory, install terraform, then change back into ```./workspace/terraform-beginner-bootcamp-2023```.
 
-![screenshot](assets/script update.png)
+![screenshot](assets/script_update.png)
 
 - But what if we wanted to make this portible so other developers can use the script. Let's set our variable!
 
-![screenshot](assets/set variable.png)
+![screenshot](assets/set_variable.png)
 > Made a variable called ```PROJECT_ROOT``` and set the value of the directory we want to change into.
 
 - Another way we can set a variable is use ```export``` and then ```echo``` to check the value.
