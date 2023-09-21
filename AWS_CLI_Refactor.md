@@ -46,10 +46,10 @@ We're gonna commit our changes, make a PR, and tag our main branch with ```0.4.0
 
 - I had some security concerns especially using env var to store them. You should **NEVER** hard code credintials in a file or in a cloud development environment aka the ```gp env``` common but since this is a bootcamp and my IAM user will temporary we chose this route. I asked Andrew in the Discord server for any best practices he knows of and this was his response.
   
- ![screenshot](assets/Discord.png)
+![screenshot](assets/Discord.png)
 
- ![screenshot](assets/Discord_two.png)
- > Had another bootcamper give his security suggestions[<sup>[4]</sup>](#references)[<sup>[5]</sup>](#references)
+![screenshot](assets/Discord_two.png)
+> Had another bootcamper give his security suggestions[<sup>[4]</sup>](#references)[<sup>[5]</sup>](#references)
 
 -  We'll need to generate AWS CLI credentials from the IAM service in the portal in order to use the AWS CLI. Security best practice is to set MFA so don't forget to do that.
 
