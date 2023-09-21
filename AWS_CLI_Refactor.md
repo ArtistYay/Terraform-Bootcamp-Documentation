@@ -40,7 +40,7 @@ And whenever we start the workspace and do a `aws sts get-caller-identity`[<sup>
 }
 ```
 
-We're gonna commit our changes, make a PR, and tag our main branch with ```0.4.0```.
+We're gonna commit our changes, make a PR, and tag our main branch with ```0.5.0```.
 
 ## Considerations
 
