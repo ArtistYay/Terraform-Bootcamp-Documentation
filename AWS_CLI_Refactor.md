@@ -40,15 +40,20 @@ And whenever we start the workspace and do a `aws sts get-caller-identity`[<sup>
 }
 ```
 
-We're gonna commit our changes, make a PR, and tag our main branch with ```0.5.0```.
+We're gonna commit our changes, make a PR, and tag our main branch with ```0.4.0```.
 
 ## Considerations
 
 - I had some security concerns especially using env var to store them. You should **NEVER** hard code credintials in a file or in a cloud development environment aka the ```gp env``` common but since this is a bootcamp and my IAM user will temporary we chose this route. I asked Andrew in the Discord server for any best practices he knows of and this was his response.
   
- ![screenshot](assets/Discord.png)
+![screenshot](assets/Discord.png)
+
+![screenshot](assets/Discord_two.png)
+> Had another bootcamper give his security suggestions[<sup>[4]</sup>](#references)[<sup>[5]</sup>](#references)
 
 -  We'll need to generate AWS CLI credentials from the IAM service in the portal in order to use the AWS CLI. Security best practice is to set MFA so don't forget to do that.
+
+- You prevent environment variables from being committed to your repository when configuring AWS credentials for Terraform by storing the environment variables in a separate file and adding it to the `.gitignore` file.
 
 
 ## References
@@ -57,3 +62,7 @@ We're gonna commit our changes, make a PR, and tag our main branch with ```0.5.0
 - [AWS CLI Env Var](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-envvars.html)<sup>[2]</sup>
 
 - [AWS STS get-caller-identity](https://docs.aws.amazon.com/cli/latest/reference/sts/get-caller-identity.html)<sup>[3]</sup>
+
+- [AWS SSO](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sso.html)<sup>[4]</sup>
+
+- [AWS Vault](https://github.com/99designs/aws-vault)<sup>[5]</sup>
