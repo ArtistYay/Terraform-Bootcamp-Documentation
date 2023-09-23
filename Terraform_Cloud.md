@@ -1,7 +1,7 @@
-## Terraform State: A Secure :house: in the :cloud:
+# Terraform State: A Secure :house: in the :cloud:
 For this documentation I will explain the process on how we created a randomaly named S3 bucket and migrated our Terraform state file to Terraform cloud.
 
-# Random Name S3 :bucket:
+## Random Name S3 :bucket:
 - First thing we want to figure out is how our we going to randomly generate a bucket name. Terraform has a random provider[<sup>[1]</sup>](#references) that can do just that!
 
  ```
@@ -47,7 +47,7 @@ output "random_bucket_name" {
 }
 ```
 
-# Terraform :cloud: Login
+## Terraform :cloud: Login
  - We want to create an account in Terraform Cloud[<sup>[4]</sup>](#references), make a workspace then a project in the workspace we created.
 
   ![screenshot](assets/Terraform_Cloud.png)
@@ -111,7 +111,7 @@ chmod u+x ./bin/<NAME_OF_BASH_SCRIPT>
 
 - This next part I had a couple of errors I ran into. First was the provider block I explained earlier and second, Terraform could not read my AWS credentials even though I had stored them in the Gitpod environment variables.
 
-- To work around this I had to go into Terraform Cloud and under workspaces I could specify my variables.
+- To work around this I had to go into Terraform Cloud and under workspaces I could specify my variables[<sup>[8]</sup>](#references).
 
   ![screenshot](assets/cloud_var.png)
 
@@ -135,3 +135,5 @@ chmod u+x ./bin/<NAME_OF_BASH_SCRIPT>
 - [Gitpod Env Var](https://www.gitpod.io/docs/configure/projects/environment-variables)<sup>[6]</sup>
 
 - [Terraform JSON Structure](https://www.reddit.com/r/Terraform/comments/rtl5ey/can_anyone_please_show_me_show_me_how/)<sup>[7]</sup>
+
+- [Terraform Env Var](https://developer.hashicorp.com/terraform/tutorials/cloud-get-started/cloud-create-variable-set)<sup>[8]</sup>
