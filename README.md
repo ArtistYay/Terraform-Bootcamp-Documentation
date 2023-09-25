@@ -1,3 +1,5 @@
+![screenshot](assets/GitHub_Issue.png)
+
 # Writing Good Documentation
 
 ## Weekly Journals
