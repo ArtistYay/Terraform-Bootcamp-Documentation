@@ -1,4 +1,4 @@
-![screenshot](assets/Week_0_diagram.png)
+![My image](https://github.com/ArtistYay/Terraform-Bootcamp-Documentation/blob/main/assets/Week_0_diagram.png)
 
 ## Table Of Contents
 - [How do we create a branch, tag the branch, and create a PR to merge the branch?](#how-do-we-create-a-branch--tag-the-branch--and-create-a-pr-to-merge-the-branch-)
