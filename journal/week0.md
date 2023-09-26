@@ -1,4 +1,4 @@
-![My image](https://github.com/ArtistYay/Terraform-Bootcamp-Documentation/blob/main/assets/Week_0_diagram.png)
+![screenshot](../assets/Week_0_diagram.png)
 
 ## Table Of Contents
 - [How do we create a branch, tag the branch, and create a PR to merge the branch?](#how-do-we-create-a-branch--tag-the-branch--and-create-a-pr-to-merge-the-branch-)
@@ -25,7 +25,7 @@
 ## Creating a branch
 - We want to open a new issue that explains the feature we are trying to implement to our main branch.
 
-![screenshot](assets/GitHub_Issue.png)
+![screenshot](../assets/GitHub_Issue.png)
 > Screenshot of a Github issue made.
 
 - Now that the feature or issue is made we want to create a branch and switch to it, we can do so using this command.
@@ -41,7 +41,7 @@ git checkout -b <name_of_branch>
 git push --set-upstream origin
 ```
 
-![screenshot](assets/upstream_command.png)
+![screenshot](../assets/upstream_command.png)
 > The ```git push --set-upstream origin``` command pushes your local branch to the remote repository named origin and sets it as the upstream branch. This means that when you run git push without any arguments, git will push your local branch to the remote upstream branch.
 
 ## Tagging
@@ -57,35 +57,35 @@ git tag
 git push --tags
 ```
 
-![screenshot](assets/tag.png)
+![screenshot](../assets/tag.png)
 
 - We can also tag the branch commit to an issue.
 
-![screenshot](assets/tag_to_issue.png)
+![screenshot](../assets/tag_to_issue.png)
 
 ## Pull Request (PR)
 - Let's run down what we have done. There was an issue opened for a new feature, we created a new branch to work on the feature becuase we didn't want to merge any changes to the main branch because we can introduce bugs, we made the feature and pushed it into the branch and tagged it to the issue.
 
 - Now we need to merge the branch into the main branch so let's create a PR in GitHub.
 
-![screenshot](assets/PR.png)
+![screenshot](../assets/PR.png)
 
 - We went ahead and made a PR request now we are going to merge it to the main branch.
 
-![screenshot](assets/end_of_merge.png)
+![screenshot](../assets/end_of_merge.png)
 > For this part we went ahead and merge it to the main branch ourselves but in a real dev environment this PR request will have to be looked over before it is merged.
 
 # Solving our Terraform CLI installtion problem :scream:
 
 - Like a good engineer we always want to open a issue and create a new branch which we will work out of.
   
-  ![screenshot](assets/issue.png)
+  ![screenshot](../assets/issue.png)
 
 - Now let's get to work! So when launching the Gitpod workspace the installation does not complete because there is supposed to be some human interaction.
 
 - We want to know which command is asking for the interaction so we go line by line and test how each command reacts.
 
-  ![screenshot](assets/script.png)
+  ![screenshot](../assets/script.png)
 
 - While going line by line we notice there is an error of ```apt-key is deprecated. Manage keyring files in trusted.gpg.d instead (see apt-key(8))``` due to GPG keyring changes.
 
@@ -102,14 +102,14 @@ git push --tags
   
 - After we change the file's permissions we went ahead and make changes to our Gitpod YAML file but there was a coding trap which Andrew thankfully pointed out. For some reason when restarting our Gitpod workspace after shutting it down the Gitpod task does not run ```init``` but instead it runs ```before``[<sup>[4]</sup>](#references)
 
-   ![screenshot](assets/gitpod_lifecycle.png)
+   ![screenshot](../assets/gitpod_lifecycle.png)
 
 - Lastly, we have to change all our ```init``` in the YAML file to ```before``` to get the script working.
  
-   ![screenshot](assets/script2.png)
+   ![screenshot](../assets/script2.png)
    > Script that installs Terraform.
      
-   ![screenshot](assets/script3.png)
+   ![screenshot](../assets/script3.png)
    > YAML file calling the script.
    
 # The importance of Environment Variables :superhero:
@@ -136,7 +136,7 @@ Let's go ahead and jump into where we used Environment Variables.
 
 - The first thing we have done is run the ```env``` command to show us all the set environment variables.
 
-![screenshot](assets/env.png)
+![screenshot](../assets/env.png)
 
 - To look for a certain variable we used grep:
 
@@ -146,20 +146,20 @@ env | grep Terraform
 
 - We made changes to the bash script file that's in our ```./bin``` folder to ```cd``` into our ```./workspace``` directory, install terraform, then change back into ```./workspace/terraform-beginner-bootcamp-2023```.
 
-![screenshot](assets/script_update.png)
+![screenshot](../assets/script_update.png)
 
 - But what if we wanted to make this portible so other developers can use the script. Let's set our variable!
 
-![screenshot](assets/set_variable.png)
+![screenshot](../assets/set_variable.png)
 > Made a variable called ```PROJECT_ROOT``` and set the value of the directory we want to change into.
 
 - Another way we can set a variable is use ```export``` and then ```echo``` to check the value.
 
-![screenshot](assets/export.png)
+![screenshot](../assets/export.png)
 
 - To get rid of the value in the variable just use ```unset```.
 
-![screenshot](assets/unset.png)
+![screenshot](../assets/unset.png)
 
 # Terraforming :bucket: Names: A Random Approach
 
@@ -171,7 +171,7 @@ In this write-up I wanted to talk about how we used Terraform to generate a rand
 
 The first thing Andrew and I did was explore a magical website where I'll be spending most of my time in and it's called the Terraform registry [<sup>[5]</sup>](#references)
 
-![screenshot](assets/registry.png)
+![screenshot](../assets/registry.png)
 
 He taught me that **providers** is an interface to APIs that will allow to create resources in Terrafrom and **Modules** are a way to make large amounts of Terraform code modular, portable and shareable.
 
@@ -179,7 +179,7 @@ He taught me that **providers** is an interface to APIs that will allow to creat
 
 The registry is the place to be ya'll! Utilizing the search bar we found the page to install the random provider [<sup>[6]</sup>](#references) in our ```main.tf``` file. Everything is coming from the Terraform random provider [<sup>[7]</sup>](#references) docs in the registry.
 
-![screenshot](assets/main.png)
+![screenshot](../assets/main.png)
 > For this code we didn't want to use any special characters becuase of AWS rules, even though we didn't deploy any buckets it was best practice to change it to false.
 
 Next, we wanted to output our randomly generated name using the ```output```
@@ -205,11 +205,11 @@ terraform plan
 ```
 > This will generate out a changeset, about the state of our infrastructure and what will be changed.
 
-![screenshot](assets/plan.png)
+![screenshot](../assets/plan.png)
 
 Lastly, lets run ```terraform apply --auto-approve``` to get our random name. This will run a plan and pass the changeset to be executed by Terraform.
 
-![screenshot](assets/output.png)
+![screenshot](../assets/output.png)
 
 ## AWS CLI in a Snap :recycle:
 
@@ -233,7 +233,7 @@ chmod u+x ./bin/install_aws_cli
 ```
 Next, I changed the YAML to exectue the file using source.
 
-![screenshot](assets/yaml.png)
+![screenshot](../assets/yaml.png)
 
 Lastly, we had to set the environment variables[<sup>[9]</sup>](#references) in the Gitpod secret manager using the ```gp env``` command.
 
@@ -288,7 +288,7 @@ resource "random_string" "bucket_name" {
 
 - Now to create the bucket, we are going to insert the AWS provider[<sup>[15]</sup>](#references) block in our `.main.tf` file.
 
-  ![screenshot](assets/AWS_provider.png)
+  ![screenshot](../assets/AWS_provider.png)
   > I forgot to insert the provider block and got an error when running apply.
   
 - Next we are going to call the output we got for the `random_string` resource and have it as a value for our bucket name.
@@ -307,7 +307,7 @@ output "random_bucket_name" {
 ## Terraform :cloud: Login
  - We want to create an account in Terraform Cloud[<sup>[16]</sup>](#references), make a workspace then a project in the workspace we created.
 
-  ![screenshot](assets/Terraform_Cloud.png)
+  ![screenshot](../assets/Terraform_Cloud.png)
   > A workspace is a container in Terraform Cloud for infrastructure state, configurations, and settings. A project is an overarching effort or goal, potentially consisting of multiple Terraform Cloud workspaces.
 
 - So, how does Terraform Cloud knows to host our Terraform state file? well we have to insert a cloud block[<sup>[17]</sup>](#references) into our `.main.tf` file.
@@ -364,13 +364,13 @@ chmod u+x ./bin/<NAME_OF_BASH_SCRIPT>
 ```
 - And change our YAML file to run the executable.
 
-  ![screenshot](assets/run_script.png)
+  ![screenshot](../assets/run_script.png)
 
 - This next part I had a couple of errors I ran into. First was the provider block I explained earlier and second, Terraform could not read my AWS credentials even though I had stored them in the Gitpod environment variables.
 
 - To work around this I had to go into Terraform Cloud and under workspaces I could specify my variables[<sup>[20]</sup>](#references).
 
-  ![screenshot](assets/cloud_var.png)
+  ![screenshot](../assets/cloud_var.png)
 
 - After running terraform init, plan, and apply I was finally able to get the code to work and Terraform Cloud to host the state file.
 
@@ -396,9 +396,9 @@ chmod u+x ./bin/<NAME_OF_BASH_SCRIPT>
 
 - I had some security concerns especially using env var to store them. You should **NEVER** hard code credintials in a file or in a cloud development environment aka the ```gp env``` common but since this is a bootcamp and my IAM user will temporary we chose this route. I asked Andrew in the Discord server for any best practices he knows of and this was his response.
   
-![screenshot](assets/Discord.png)
+![screenshot](../assets/Discord.png)
 
-![screenshot](assets/Discord_two.png)
+![screenshot](../assets/Discord_two.png)
 > Had another bootcamper give his security suggestions[<sup>[11]</sup>](#references)[<sup>[12]</sup>](#references)
 
 -  We'll need to generate AWS CLI credentials from the IAM service in the portal in order to use the AWS CLI. Security best practice is to set MFA so don't forget to do that.
