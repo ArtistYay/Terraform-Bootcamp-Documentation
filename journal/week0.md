@@ -209,7 +209,7 @@ terraform plan
 
 Lastly, lets run ```terraform apply --auto-approve``` to get our random name. This will run a plan and pass the changeset to be executed by Terraform.
 
-![screenshot](assets/output.png)
+![screenshot](../assets/output.png)
 
 ## AWS CLI in a Snap :recycle:
 
