@@ -56,13 +56,35 @@ terraform apply -var-file="variables.tfvars"
 ├── *.auto.tfvars/*.auto.tfvars.json            
 └── -var/-var-file  
 ```
+
+## Terraform Import & Configuration Drift
+
+- Terraform import is a command that allows you to bring existing infrastructure under Terraform management. For example, you created an EC2 instance and want Terraform to manage it in the state file. You can use the command `terraform import aws_instance.my_instance i-1234567890abcdef0`[<sup>[18]</sup>](#references) or use the import code block[<sup>[3]</sup>](#references):
+
+```
+import {
+  to = aws_instance.example
+  id = "i-abcd1234"
+}
+
+resource "aws_instance" "example" {
+  name = "hashi"
+  # (other resource arguments...)
+}
+```
+- The `terraform import` command will create a new resource block in your Terraform configuration file for the imported resource. You can then manage the resource like any other Terraform-managed resource.
+
+## Create Terrahouse Module
+
+-
+
 ## References
 
 - [Standard Module Structure](https://developer.hashicorp.com/terraform/language/modules/develop/structure)<sup>[1]<sup>
 
-- [GitHub Wiki TOC generator](https://ecotrust-canada.github.io/markdown-toc/)<sup>[2]<sup>
+- [GitHub Wiki TOC generator](https://luciopaiva.com/markdown-toc/)<sup>[2]<sup>
 
-- [Terraform Import](https://developer.hashicorp.com/terraform/cli/import)<sup>[3]<sup>
+- [Terraform Import](https://developer.hashicorp.com/terraform/language/import#resource-configuration)<sup>[3]<sup>
 
 - [Terraform Module Sources](https://developer.hashicorp.com/terraform/language/modules/sources)<sup>[4]<sup>
 
@@ -91,3 +113,5 @@ terraform apply -var-file="variables.tfvars"
 - [Terraform Workspace Variables](https://developer.hashicorp.com/terraform/cloud-docs/workspaces/variables)<sup>[16]<sup>
 
 - [Terraform Variable Definition Precedence](https://developer.hashicorp.com/terraform/language/values/variables#variable-definition-precedence)<sup>[17]<sup>
+
+- [Terraform Command: import](https://developer.hashicorp.com/terraform/cli/commands/import)<sup>[18]<sup>
