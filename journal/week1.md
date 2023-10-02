@@ -57,7 +57,7 @@ terraform apply -var-file="variables.tfvars"
 └── -var/-var-file  
 ```
 
-## Terraform Import & Configuration Drift
+## Terraform Import & Configuration Drift :wind_face:
 
 - Terraform import is a command that allows you to bring existing infrastructure under Terraform management. For example, you created an EC2 instance and want Terraform to manage it in the state file. You can use the command `terraform import aws_instance.my_instance i-1234567890abcdef0`[<sup>[18]</sup>](#references) or use the import code block[<sup>[3]</sup>](#references):
 
@@ -74,10 +74,55 @@ resource "aws_instance" "example" {
 ```
 - The `terraform import` command will create a new resource block in your Terraform configuration file for the imported resource. You can then manage the resource like any other Terraform-managed resource.
 
-## Create Terrahouse Module
+## Creating a Terra:house: Module
 
 -
 
+## Static Website Hosting
+
+- AWS let's you host a static website on a S3 bucket. You can use HTML, CSS, Javascript.
+
+- You can use Terraform to push HTML files to the bucket using `resource "aws_s3_object"`:
+
+```
+resource "aws_s3_object" "index_html" {
+  bucket = aws_s3_bucket.website_bucket.bucket
+  key    = "index.html"
+  source = var.index_html_filepath
+
+  etag = filemd5(var.index_html_filepath)
+}
+```
+> We used the `etag`[<sup>[6]</sup>](#references) and `filemd5` function[<sup>[7]</sup>](#references) to get the hash of the file so if any changes was made to the file Terraform can replace the object in the bucket.
+
+- For the source, you can use a special variable called `path`[<sup>[5]</sup>](#references) to reference local paths:
+  - `path.module` = get the path for the current module.
+  - `path.root` = get the path for the root module.
+ 
+```
+resource "aws_s3_object" "error_html" {
+  bucket = aws_s3_bucket.website_bucket.bucket
+  key    = "error.html"
+  source = "${path.root}/public/index.html"
+
+  etag = filemd5(var.error_html_filepath)
+}
+```
+
+- We also used the `fileexist` function to check if the file exist.
+
+```
+variable "error_html_filepath" {
+  description = "The file path for error.html"
+  type        = string
+
+  validation {
+    condition     = fileexists(var.error_html_filepath)
+    error_message = "The provided path for error.html does not exist."
+  }
+}
+```
+## 
 ## References
 
 - [Standard Module Structure](https://developer.hashicorp.com/terraform/language/modules/develop/structure)<sup>[1]<sup>
