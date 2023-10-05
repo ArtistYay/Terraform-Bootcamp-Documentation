@@ -2,6 +2,15 @@
 
 ![screenshot](../assets/Week_2_diagram.png)
 
+# Table of contents
+
+- [Setting Up Terratowns Mock :globe_with_meridians: Server](#setting-up-terratowns-mock-globe_with_meridians-server)
+- [Setup :skull: For Custom Terraform Provider](#setup-skull-for-custom-terraform-provider)
+- [Provider Block for Custom Terraform Provider](#provider-block-for-custom-terraform-provider)
+- [Implementing CRUD](#implementing-crud)
+- [References](#references)
+
+
 ## Setting Up Terratowns Mock :globe_with_meridians: Server
 
 - Bundler is a package manager for Ruby. It is the primary way to install Ruby packages. You need to create a Gemfile and define your gems in that file.
