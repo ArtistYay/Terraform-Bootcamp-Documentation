@@ -67,6 +67,8 @@ gem 'activerecord'
 
 - CRUD stands for Create, Read Update, and Delete
 
+![screenshot](../assets/Week_2_CRUD_Diagram.png)
+
 ## References
 
 - [Sintra Web Framework](https://sinatrarb.com/)<sup>[1]<sup>
