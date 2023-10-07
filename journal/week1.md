@@ -2,6 +2,17 @@
 
 ![screenshot](../assets/Week_1_diagram.png)
 
+# Table of contents
+
+- [Restructure Root Module](#restructure-root-module)
+- [Terraform Import & Configuration Drift :wind_face:](#terraform-import--configuration-drift-wind_face)
+- [Creating a Terra:house: Module](#creating-a-terrahouse-module)
+- [Static Website Hosting](#static-website-hosting)
+- [Content Delivery Network](#content-delivery-network)
+- [Invalidate Cache and Local Exec](#invalidate-cache-and-local-exec)
+- [Assets Upload and For Each](#assets-upload-and-for-each)
+- [References](#references)
+
 ## Restructure Root Module
 
 - A best practice is to have your files in a Standard Module Structure[<sup>[1]</sup>](#references). A standard module structure helps to ensure that all Terraform modules are structured in a consistent way, makes it easier to reuse modules in different projects, and makes Terraform modules easier to maintain and update.
@@ -76,7 +87,27 @@ resource "aws_instance" "example" {
 
 ## Creating a Terra:house: Module
 
--
+- It is recommend to place modules in a `modules` directory when locally developing modules but you can name it whatever you like.
+
+- We can pass input variables to our module. The module has to declare the terraform variables in its own variables.tf.
+
+```
+module "terrahouse_aws" {
+  source = "./modules/terrahouse_aws"
+  user_uuid = var.user_uuid
+  bucket_name = var.bucket_name
+}
+```
+- Using the source[<sup>[4]</sup>](#references) we can import the module from various places eg:
+  - locally
+  - Github
+  - Terraform Registry
+
+```
+module "terrahouse_aws" {
+  source = "./modules/terrahouse_aws"
+}
+```
 
 ## Static Website Hosting
 
@@ -122,7 +153,40 @@ variable "error_html_filepath" {
   }
 }
 ```
-## 
+## Content Delivery Network 
+
+- AWS no longer uses OAI but OAC[<sup>[9]</sup>](#references)
+
+- We use the jsonencode to create the json policy inline in the HCL.
+
+```
+> jsonencode({"hello"="world"})
+{"hello":"world"}
+```
+
+## Invalidate Cache and Local Exec
+
+- `local-exec`[<sup>[13]</sup>](#references) will execute command on the machine running the terraform commands eg. plan apply
+
+```
+resource "aws_instance" "web" {
+  # ...
+
+  provisioner "local-exec" {
+    command = "echo The server's IP address is ${self.private_ip}"
+  }
+}
+```
+## Assets Upload and For Each
+
+- For each[<sup>[12]</sup>](#references) allows us to enumerate over complex data types
+
+```sh
+[for s in var.list : upper(s)]
+```
+
+This is mostly useful when you are creating multiples of a cloud resource and you want to reduce the amount of repetitive terraform code.
+
 ## References
 
 - [Standard Module Structure](https://developer.hashicorp.com/terraform/language/modules/develop/structure)<sup>[1]<sup>
